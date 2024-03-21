@@ -5,7 +5,7 @@ from store.models import Category, Product, Review
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["title", "created_at", "updated_at"]
+    list_display = ["id", "title", "created_at", "updated_at"]
     list_display_links = ("title",)
     search_fields = [
         "title",

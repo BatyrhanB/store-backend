@@ -9,5 +9,14 @@ class ProductListSerializer(serializers.ModelSerializer):
         fields = ["id", "title", "category", "description", "price", "created_at"]
 
 
-class ProductInCartSerializer(ProductListSerializer):
-    ...
+class ProductInCartSerializer(ProductListSerializer): ...
+
+
+class ProductCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ["id", "title", "category", "description", "price", "created_at"]
+        read_only_fields = ["id", "created_at"]
+
+
+class ProductRetrieveUpdateDestroySerializer(ProductCreateSerializer): ...
