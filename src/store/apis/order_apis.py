@@ -1,8 +1,9 @@
-from rest_framework import generics, response, status
+from rest_framework import generics, response, status, permissions
 
+from store.models import Order
 from store.services.cart_services import Cart
 from store.services.order_services import OrderService
-from store.serializers.order_serializers import OrderSerializer
+from store.serializers.order_serializers import OrderPlaceSerializer, OrderListSerializer
 
 
 class PlaceOrderAPIView(generics.GenericAPIView):
@@ -11,7 +12,7 @@ class PlaceOrderAPIView(generics.GenericAPIView):
 
     """
 
-    serializer_class = OrderSerializer
+    serializer_class = OrderPlaceSerializer
 
     def post(self, request, *args, **kwargs):
         """
@@ -39,3 +40,11 @@ class PlaceOrderAPIView(generics.GenericAPIView):
         return response.Response(
             {"message": "Order placed successfully.", "order_id": order.id}, status=status.HTTP_201_CREATED
         )
+
+
+class OrderListAPIView(generics.ListAPIView):
+    serializer_class = OrderListSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user).select_related("user")
