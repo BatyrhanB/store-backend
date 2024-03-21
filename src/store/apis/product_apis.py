@@ -11,11 +11,14 @@ from store.filters import ProductFilter
 
 
 class ProductListAPIView(generics.ListAPIView):
-    queryset = Product.objects.filter(is_deleted=False)
     serializer_class = ProductListSerializer
     permission_classes = (permissions.AllowAny,)
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = ProductFilter
+
+    def get_queryset(self):
+        return Product.objects.filter(is_deleted=False).select_related("category")
+
 
 class ProductCreateAPIVIew(generics.CreateAPIView):
     queryset = Product.objects.filter(is_deleted=False)
