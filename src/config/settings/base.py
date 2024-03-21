@@ -86,7 +86,6 @@ USE_TZ = True
 
 LANGUAGE_CODE = "en-US"
 USE_I18N = True
-USE_L10N = True
 LANGUAGES = (("en", _("English")),)
 
 # Static files

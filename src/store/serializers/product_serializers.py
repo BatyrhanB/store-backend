@@ -9,7 +9,8 @@ class ProductListSerializer(serializers.ModelSerializer):
         fields = ["id", "title", "category", "description", "price", "created_at"]
 
 
-class ProductInCartSerializer(ProductListSerializer): ...
+class ProductInCartSerializer(ProductListSerializer):
+    pass
 
 
 class ProductCreateSerializer(serializers.ModelSerializer):
@@ -19,4 +20,5 @@ class ProductCreateSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "created_at"]
 
 
-class ProductRetrieveUpdateDestroySerializer(ProductCreateSerializer): ...
+class ProductRetrieveUpdateDestroySerializer(ProductCreateSerializer):
+    pass
