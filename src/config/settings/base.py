@@ -16,7 +16,8 @@ PRODUCTION = config("PRODUCTION", default=False, cast=bool)
 
 LOCAL_APPS = [
     "common.apps.CommonConfig",
-    "user.apps.UserConfig"
+    "user.apps.UserConfig",
+    "store.apps.StoreConfig",
 ]
 
 THIRD_PARTY_APPS = [
@@ -72,6 +73,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CART_SESSION_ID = "cart"
 
 WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"

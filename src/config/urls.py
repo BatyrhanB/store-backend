@@ -7,7 +7,8 @@ from config.yasg import schema_view
 
 urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
-    path("api/v1/", include("user.urls"))
+    path("api/v1/", include("user.urls")),
+    path("api/v1/", include("store.urls"))
 ]
 
 if settings.DEBUG:
