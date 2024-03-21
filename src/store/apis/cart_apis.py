@@ -5,10 +5,21 @@ from store.services.cart_services import Cart
 
 class CartAPI(views.APIView):
     """
-    Single API to handle cart operations
+    API view to handle cart operations such as adding, removing, and clearing items from the cart.
     """
 
     def get(self, request, format=None):
+        """
+        Handles GET requests to retrieve cart data.
+
+        Args:
+            request: HTTP request object.
+            format: Optional format of the response (default is None).
+
+        Returns:
+            HTTP response containing cart data and total price.
+
+        """
         cart = Cart(request)
 
         return response.Response(
@@ -16,6 +27,17 @@ class CartAPI(views.APIView):
         )
 
     def post(self, request, **kwargs):
+        """
+        Handles POST requests to modify the cart.
+
+        Args:
+            request: HTTP request object.
+            **kwargs: Additional keyword arguments.
+
+        Returns:
+            HTTP response confirming the cart update.
+
+        """
         cart = Cart(request)
 
         if "remove" in request.data:
@@ -30,7 +52,7 @@ class CartAPI(views.APIView):
             cart.add(
                 product=product["product"],
                 quantity=product["quantity"],
-                overide_quantity=product["overide_quantity"] if "overide_quantity" in product else False,
+                overide_quantity=product.get("override_quantity", False),
             )
 
         return response.Response({"message": "cart updated"}, status=status.HTTP_202_ACCEPTED)
