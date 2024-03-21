@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from store.models import Category, Product, Review
+from store.models import Category, Product, Review, Order, OrderItem
 
 
 @admin.register(Category)
@@ -61,3 +61,44 @@ class ReviewAdmin(admin.ModelAdmin):
     ordering = ["-created_at"]
     list_per_page = 25
     fields = ["product", "user", "review", "rating", "created_at", "updated_at"]
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ["user", "total_price", "address", "created_at", "updated_at"]
+    list_display_links = ("user",)
+    list_filter = ("user",)
+    search_fields = [
+        "user",
+        "address",
+    ]
+    readonly_fields = [
+        "id",
+        "created_at",
+        "updated_at",
+    ]
+    ordering = ["-created_at"]
+    list_per_page = 25
+    fields = ["user", "total_price", "address", "created_at", "updated_at"]
+
+
+@admin.register(OrderItem)
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ["order", "product", "quantity", "price", "created_at", "updated_at"]
+    list_display_links = ("order",)
+    list_filter = (
+        "order",
+        "product",
+    )
+    search_fields = [
+        "order",
+        "product",
+    ]
+    readonly_fields = [
+        "id",
+        "created_at",
+        "updated_at",
+    ]
+    ordering = ["-created_at"]
+    list_per_page = 25
+    fields = ["order", "product", "quantity", "price", "created_at", "updated_at"]
