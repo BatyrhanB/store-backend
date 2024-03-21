@@ -22,5 +22,9 @@ attrs==22.1.0
 
 gunicorn==20.1.0
 
+#auth
 djangorestframework-simplejwt==5.3.0
 PyJWT==2.8.0
+
+#filtering
+django-filter==24.1

@@ -25,7 +25,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "debug_toolbar",
     "drf_yasg",
-
+    "django_filters",
 ]
 
 THEME_APPS = [
