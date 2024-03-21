@@ -1,5 +1,7 @@
 import uuid
+
 from django.db import transaction
+from django.contrib.auth.models import AnonymousUser
 
 from store.models import Order, Product, OrderItem
 
@@ -18,10 +20,11 @@ class OrderService:
         if len(cart) == 0:
             return None, "Cart is empty. Unable to place order."
 
+        if isinstance(user, AnonymousUser):
+            user = None
+
         product_ids = [uuid.UUID(product_id) for product_id in cart.cart.keys()]
-
         products = Product.objects.filter(id__in=product_ids)
-
         product_map = {str(product.id): product for product in products}
 
         total_price = sum(
@@ -42,5 +45,4 @@ class OrderService:
             OrderItem.objects.bulk_create(order_items)
 
             cart.clear()
-
         return order, None

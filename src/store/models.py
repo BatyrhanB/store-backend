@@ -72,7 +72,7 @@ class Review(BaseModel):
 
 
 class Order(BaseModel):
-    user = models.ForeignKey("user.User", on_delete=models.CASCADE, null=False, blank=False, verbose_name=_("User"))
+    user = models.ForeignKey("user.User", on_delete=models.CASCADE, null=True, blank=True, verbose_name=_("User"))
     total_price = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, blank=False, verbose_name=_("Total price")
     )
