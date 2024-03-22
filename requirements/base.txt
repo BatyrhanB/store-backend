@@ -1,27 +1,30 @@
+#django
 Django==4.2.3
-python-decouple==3.8
-
-psycopg2==2.9.5
-#psycopg2-binary==2.9.5
 djangorestframework==3.14.0
-
 django-extensions==3.2.1
 django-cors-headers==4.1.0
-django-jazzmin==2.6.0
-django-jazzmin-admin-rangefilter==1.0.0
-django-debug-toolbar==3.8.1
-drf-yasg==1.21.7
-
 coreapi==2.3.3
-
 Pillow==10.0.0
 requests==2.31.0
 python-magic==0.4.27
-
 boto3==1.26.0
 attrs==22.1.0
 
 gunicorn==20.1.0
+
+#db
+psycopg2==2.9.5
+#psycopg2-binary==2.9.5
+
+#themes admin
+django-jazzmin==2.6.0
+django-jazzmin-admin-rangefilter==1.0.0
+
+#.env
+python-decouple==3.8
+
+#docs
+drf-yasg==1.21.7
 
 #auth
 djangorestframework-simplejwt==5.3.0
@@ -29,3 +32,6 @@ PyJWT==2.8.0
 
 #filtering
 django-filter==24.1
+
+#tools
+django-debug-toolbar==3.8.1
