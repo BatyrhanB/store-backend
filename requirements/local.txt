@@ -5,6 +5,7 @@ pytest-django==4.5.2
 
 factory-boy==3.2.1
 Faker==18.6.0
+model-bakery==1.17.0
 
 ipdb==0.13.13
 ipython==8.10.0
